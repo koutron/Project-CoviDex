@@ -2,37 +2,34 @@
 <html lang="en">
 
 <head>
-    <!-- google fonts link (cl) -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400&display=swap" rel="stylesheet">
-    <!-- bootstrap css links (cl) -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!--  link for font awesome-->
-    <link rel=“stylesheet” href=“https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css”>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CoviDex</title>
+
+    <!--  link for font awesome-->
+    <link rel=“stylesheet” href=“https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css”>
+    <link rel="stylesheet/css" href="style.css">
 </head>
+
 
 <body>
 <!-- main header -->
-
     <div id="heading">
-        <h1>Covi-Dex</h1>
+      <h1>Covi-Dex</h1>
     </div>
 
-   <!-- search display -->
- 
-   <div class="">
-    <h1>State Search</h1>
-    <form id="stateSearch">
-      <label for="state-input">Search for a State</label>
+   <!-- search list display -->
+   <div class="searchList">
+      <h1>State Search</h1>
+      <form id="stateSearch">
+      <label for="state-input">Search for a State: </label>
       <input type="text" id="state-input"><br>
-      <!-- This button will trigger our AJAX call -->
-      <input id="find-state" type="submit" value="search">
-    </form>
-    <!-- We'll be dumping our JSON contents in here -->
-    <div id="state-view"></div>
+      <button id="find-state" type="submit">
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </button>
+      </form>
+    <!-- We'll be dumping our searched states into this div. They will be in button form -->
+      <div id="buttonsHere"></div>
    </div>
 
                
@@ -57,34 +54,23 @@
         </div>
     </div>
 
-    
+
     <div class="card">
       <div class="card-body">
         <h5 class="card-title" id="date">date</h5>
-      </div>
     </div>
 
-</div>
+  </div>
 
 </div>
- 
 
 
 <div class="row" id="fiveDays"></div>
             ​
-
-
-    <!-- bootstrap js links (cl) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="script.js"></script>
-    <script src="scriptSearch.js"></script>
-    <script src="kScript.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="script.js"></script>
+  <script src="scriptMason.js"></script>
+  <script src="kScript.js"></script>
 </body>
 
 </html>
