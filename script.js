@@ -49,53 +49,22 @@ functions needed
 */
 
 
+var MyDate = new Date();
+var myDateString;
 
+MyDate.setDate(MyDate.getDate() - 1);
 
+myDateString = MyDate.getFullYear() + ('0' + (MyDate.getMonth()+1)).slice(-2) + ('0' + MyDate.getDate()).slice(-2);
 
-
-    // This .on("click") function will trigger the AJAX Call
-    $("#searchForm").on("click", function(event) {
-
-        // Preventing the submit button from trying to submit the form
-        // We're optionally using a form so the user may hit Enter to search instead of clicking the button
-        event.preventDefault();
-
-        // Here we grab the text from the input box
-        var movie = $("#SearchCity").val();
-
-        
-        // Here we construct our URL
-        var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
-
-       
-        $.ajax({
-          url: queryURL,
-          method: "GET"
-        }).then (function(response){
-          console.log(queryURL);
-          console.log(response);
-          $("#SearchList").text(JSON.stringify(response))
-          
-        })
-        
-      });
-
-
-
-
-
-
+console.log(myDateString);
 
 
 
 
 $.ajax({
     //url: "https://api.covid19api.com/live/country/united-states/status/confirmed",
-    url: "https://covidtracking.com/api/states/daily?state=VA&date=20200415",
+    url: "https://covidtracking.com/api/states/daily?state=VA&date=" + myDateString,
     method: "GET"
 }).then(function (response) {
     console.log(response);
-    //console.log(response[0].Province);
-    //console.log(response[0].Confirmed);
-    console.log("Hello this is Kouros");
 });
