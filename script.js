@@ -1,4 +1,26 @@
+/*
+>>JS<<
+functions needed
 
+	- function to call on ajax for US
+	- function to call on US info
+		
+	- function to call on ajax for states
+	- function to display states info
+
+	- function to make search button render state information
+	- function to render search list
+	- function to make search list items into a button
+	- function to make that button render state information
+
+	- function to localStorage setItem
+	- function to localStorage getItem
+	
+
+	-function to get date
+	-function to 
+
+*/
 
 $.ajax({
     //url: "https://api.covid19api.com/live/country/united-states/status/confirmed",
