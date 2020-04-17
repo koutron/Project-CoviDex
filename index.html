@@ -7,13 +7,85 @@
     <!-- bootstrap css links (cl) -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!--  link for font awesome-->
+        <link rel=“stylesheet” href=“https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css”>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CoviDex</title>
 </head>
 
 <body>
+<!-- main header -->
 
+    <div id="heading">
+        <h1>Covi-Dex</h1>
+    </div>
+
+   <!-- search display -->
+    <div class="row" id="row">
+        <div class="col-sm-2" id="search">
+            <form id="searchForm" method="POST">
+                <label for="cityInput" id="label"> <b>Search for a city: </b></label>
+                <input type="text" id="cityInput" placeholder="&#xf002;" />
+                <button type="submit" id="searchCity">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </form>
+            <div id="searchList"></div>
+        </div>
+        ​
+        <div class="col" id="main">
+            <div id="displayMain">
+
+                <div id="heading">
+                    <h1>U.S. States: </h1>
+                </div>
+               
+                
+ <!-- card disply of data -->
+ <div class="card-group">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title" id="positive">positive</h5>
+
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title" id="recovered">recovered</h5>
+
+      </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title" id="deaths">deaths</h5>
+
+        </div>
+      </div>
+      <div class="card">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title" id="date">date</h5>
+ 
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+            </div>
+
+            ​
+            <div class="row" id="fiveDays"></div>
+
+
+            ​
+        </div>
+    </div>
 
     <!-- bootstrap js links (cl) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
