@@ -1,27 +1,83 @@
 // global variables
-var allSearches = [];
-
+var allSearch = [];
 
 // function to create button
 function renderButtons(){
   $("#buttonsHere").html("");
-  for (i=0; i<allSearches.length; i++){
-    var buttons = $("<button>");
-    buttons.text(allSearches[i]);
-    $("#buttonsHere").append(buttons);
-    buttons.attr("id", "stateAsButton");
+  for (i=0; i<allSearch.length; i++){
+    var btn = $("<button>");
+    btn.text(allSearch[i]);
+    $("#buttonsHere").append(btn);
+    btn.attr("id", "stateAsButton");
   }
 };
 
 // This on click will render out buttons from user input
 $("#find-state").on("click", function(event) {
   event.preventDefault();
-  // Here we grab the text from the input box
-  var search = $("#state-input").val();
-  allSearches.push(search)
-  // calling function to make the search input as a button
+  // var search = $("#state-input").val();
+  // allSearch.push(search)
+  getStateName();
   renderButtons();
+  storeSearch();
+  resetSearchBar();
 });
+
+function resetSearchBar(){
+  $("#state-input").val("");
+}
+
+// function to store users' input into Array
+function getStateName(){
+  var search = $("#state-input").val();
+  allSearch.push(search)
+};
+
+// function to classify each button being clicked
+$("#buttonsHere").on("click", "button", function(){
+  console.log($(this).text())
+})
+
+// function to localStorage users' search
+function storeSearch(){
+  localStorage.setItem("states", JSON.stringify(allSearch));
+}
+
+// function to get localStorage item
+
+function getSearch(){
+  var storedSearch = JSON.parse(localStorage.getItem("states"));
+  if(storedSearch !== null){
+    allSearch = storedSearch;
+  }
+  renderButtons();
+}
+
+getSearch();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   // Here we construct our URL
