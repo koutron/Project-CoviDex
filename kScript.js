@@ -1,7 +1,7 @@
 var MyDate = new Date();
-var myDateString;
+var yesterday;
 MyDate.setDate(MyDate.getDate() - 1);
-myDateString = MyDate.getFullYear() + ('0' + (MyDate.getMonth()+1)).slice(-2) + ('0' + MyDate.getDate()).slice(-2);
+yesterday = MyDate.getFullYear() + ('0' + (MyDate.getMonth()+1)).slice(-2) + ('0' + MyDate.getDate()).slice(-2);
 
 function getStateTwoDigitCode(stateFullName) {
     return this.stateList[stateFullName];
@@ -59,12 +59,9 @@ function getStateTwoDigitCode(stateFullName) {
     'wisconsin': 'WI',
     'wyoming': 'WY'}
 
-    console.log(getStateTwoDigitCode("Wyoming"))
-
-
 
 $.ajax({
-   url: "https://covidtracking.com/api/states/daily?state=VA&date=" + myDateString,
+   url: "https://covidtracking.com/api/states/daily?state=VA&date=" + yesterday,
     method: "GET"
 }).then(function (response) {
     var statePositive = response.positive;
