@@ -12,7 +12,7 @@ function renderButtons() {
     var btn = $("<button>");
     btn.text(allSearch[i]);
     $("#buttonsHere").append(btn);
-    btn.attr("id", "stateAsButton");
+    btn.attr("class", "stateAsButton");
   }
 };
 
@@ -159,17 +159,6 @@ function getStateTwoDigitCode(stateFullName) {
   return this.stateList[stateFullName];
 
 }
-
-
-$.ajax({
-  url: "https://covidtracking.com/api/states/daily?state=VA&date=" + yesterday,
-  method: "GET"
-}).then(function (response) {
-  var statePositive = response.positive;
-  var stateRecovered = response.recovered;
-  var stateDeath = response.death;
-  renderStates(statePositive, stateRecovered, stateDeath);
-});
 
 
 
