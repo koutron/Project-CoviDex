@@ -2,79 +2,120 @@
 <html lang="en">
 
 <head>
-    <!-- google fonts link (cl) -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400&display=swap" rel="stylesheet">
-    <!-- bootstrap css links (cl) -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoviDex</title>
+  <!-- google fonts used -->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- local style sheet -->
+  <link rel="stylesheet" href="style.css">
+  <!--  link for font awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoviDex</title>
 </head>
 
+
 <body>
-  
-    <body>
-        <!-- need a title bar with search -->
-        <div class = "container-fluid">
-        <div class="page-header" id="today">
-          <h2>COVI-DEX</h2>
-          <div>
-            <input type="text" id="city-input" placeholder="search by state" />
-            <input type="button" value="search" onclick="showData();"/>
-          </div>
+  <!-- ajax and jquery cdn -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- main header -->
+  <!-- CL: added class= "container-fluid" and class="covi-brand" -->
+  <div class="container-fluid">
+    <div id="heading" class="covi-brand">
+      <h1>Covi-Dex</h1>
+    </div>
+  </div>
+
+  <!-- search list display -->
+  <form class="search-box">
+    <div class="container">
+      <div class="form-group" id="stateSearch">
+        <input type="text" id="state-input" placeholder="search for a state"><button id="find-state" type="submit"><i
+            class="fa fa-search" aria-hidden="true"></i></button><br>
+        <!-- We'll be dumping our searched states into this div. They will be in button form -->
+        <div id="buttonsHere"></div>
+  </form>
+  </div>
+  </div>
+
+<!-- CL: title and data display card for searched -->
+<div class="container-fluid">
+  <div class="searchList" id="search-state">
+    <h3>US State Display: </h3>
+    <!-- card disply of data -->
+    <div class="card-group">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title" id="positive">positive</h3>
+          <h3 class="card-title" id="data-pos-search">[data]</h3>
         </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title" id="recovered">recovered</h3>
+          <h3 class="card-title" id="data-rec-search">[data]</h3>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title" id="deaths">deaths</h3>
+          <h3 class="card-title" id="data-death-search">[data]</h3>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title" id="date">date</h3>
+          <h3 class="card-title" id="data-date-search">[data]</h3>
+        </div>
+      </div>
+    </div>
+      
+<!-- CL: title and data display card for calculated overall-->
+<div class="container-fluid">
+  <div class="searchList" id="search-state">
+    <h3>US Overall </h3>
+    <!-- card disply of data -->
+    <div class="card-group">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title" id="positive">positive</h3>
+          <h3 class="card-title" id="data-pos-total">[data]</h3>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title" id="recovered">recovered</h3>
+          <h3 class="card-title" id="data-rec-total">[data]</h3>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title" id="deaths">deaths</h3>
+          <h3 class="card-title" id="data-death-total">[data]</h3>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title" id="date">date</h3>
+          <h3 class="card-title" id="data-date-total">[data]</h3>
+        </div>
+      </div>
+    </div>
 
-
-
-     <!-- need a title bar with search -->
-        <div class = "container-fluid">
-            <div class="page-header" id="today">
-              <h2>US Overall</h2>
-            </div>
-    
-       
-                <!-- need 5 display cards for 5 day forecast with title -->
-                <div class="card-group">
-                    <div class="card">
-                      <div class="card-body">
-                        <p class="card-title" id="positive">positive</p>
-
-                      </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <p class="card-text" id="recovered">recovered</p>
-                          </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <p class="card-text" id="deaths">deaths</p>
-  
-                          </div>
-                      </div>
-                    <div class="card">
-                        <div class="card-body">
-            
-                            <p class="card-text" id="date">date</p>
-                          </div>
-                    </div>
-                  </div>
-
-
-                  <div id ></div>
-
-
-
-    <!-- bootstrap js links (cl) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      <!-- bootstrap js links -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="script.js"></script>
+      <!-- ​local js files -->
+      <script src="script.js"></script>
+      <script src="scriptMason.js"></script>
+      <script src="kScript.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,47 @@
+body {
+	font-family: 'Roboto Mono', monospace;
+	background-color: rgb(85, 84, 84);
+}
+
+.covi-brand {
+	border-radius: 5px;
+	height: 60px;
+	font-size: 1.2em;
+	text-align: center;
+	background: rgb(0, 0, 0);
+	color: rgb(240, 245, 245);
+}
+
+#search-state {
+	border-radius: 5px;
+	height: 60px;
+	font-size: 1.2em;
+	text-align: center;
+	background: rgb(85, 84, 84);
+	color: rgb(240, 245, 245);
+}
+
+.search-box {
+	font-size: 1.2em;
+	text-align: center;
+	margin-top: 10px;
+    border-radius: 5px;
+}
+
+#state-input {
+	margin-top: 5px;
+	margin-left: 5px;
+	margin-bottom: 5px;
+}
+
+.card-body {
+	text-align: center;
+	background: rgb(0, 0, 0);
+    border: 2px solid rgb(233, 96, 96);
+}
+
+.card-title {
+	padding: 25px;
+	text-align: center;
+	color: rgb(233, 96, 96);
+}
