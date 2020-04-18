@@ -52,7 +52,25 @@ function getStateName() {
 // acutaly click on the arleady existing state as a button
 // function to classify each button being clicked
 $("#buttonsHere").on("click", "button", function () {
-  console.log($(this).text())
+  var buttonState = $(this).text();
+  buttonState = buttonState.toLowerCase();
+  console.log("buttonState: " + buttonState);
+  var abbrButtonState = getStateTwoDigitCode(buttonState);
+  
+  $.ajax({
+    url: "https://covidtracking.com/api/states/daily?state=" + abbrButtonState + "&date=" + yesterday,
+    method: "GET"
+  }).then(function (response) {
+    var statePositive = response.positive;
+    var stateRecovered = response.recovered;
+    var stateDeath = response.death;
+    renderStates(statePositive, stateRecovered, stateDeath);
+  });
+
+  renderButtons();
+  storeSearch();
+  resetSearchBar();
+
 })
 
 // function to localStorage users' search
