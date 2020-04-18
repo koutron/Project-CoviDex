@@ -1,6 +1,14 @@
 // global variables
 var allSearch = [];
 
+var MyDate = new Date();
+var displayTodayDate = (MyDate.getMonth() + 1) + "/" + MyDate.getDate() + "/" + MyDate.getFullYear();
+
+var yesterday;
+MyDate.setDate(MyDate.getDate() - 1);
+yesterday = MyDate.getFullYear() + ('0' + (MyDate.getMonth() + 1)).slice(-2) + ('0' + MyDate.getDate()).slice(-2);
+var displayYesterdayDate = (MyDate.getMonth() + 1) + "/" + MyDate.getDate() + "/" + MyDate.getFullYear();
+
 // function to create button
 function renderButtons() {
   $("#buttonsHere").html("");
@@ -54,7 +62,6 @@ function getStateName() {
 $("#buttonsHere").on("click", "button", function () {
   var buttonState = $(this).text();
   buttonState = buttonState.toLowerCase();
-  console.log("buttonState: " + buttonState);
   var abbrButtonState = getStateTwoDigitCode(buttonState);
   
   $.ajax({
@@ -89,13 +96,6 @@ function getSearch() {
 }
 
 getSearch();
-
-
-
-var MyDate = new Date();
-var yesterday;
-MyDate.setDate(MyDate.getDate() - 1);
-yesterday = MyDate.getFullYear() + ('0' + (MyDate.getMonth() + 1)).slice(-2) + ('0' + MyDate.getDate()).slice(-2);
 
 function getStateTwoDigitCode(stateFullName) {
 
@@ -162,13 +162,23 @@ $.ajax({
   url: "https://covidtracking.com/api/v1/us/current.json",
   method: "GET"
 }).then(function (response) {
+  console.log(response);
   var countryPositive = response[0].positive;
   var countryRecovered = response[0].recovered;
   var countryDeath = response[0].death;
+  renderCountry(countryPositive, countryRecovered, countryDeath);
 });
 
 function renderStates(statePositive, stateRecovered, stateDeath) {
-  $("#positive").text("Positive: " + statePositive);
-  $("#recovered").text("Recovered: " + stateRecovered);
-  $("#deaths").text("Deaths: " + stateDeath);
+  $("#data-pos-search").text(statePositive);
+  $("#data-rec-search").text(stateRecovered);
+  $("#data-death-search").text(stateDeath);
+  $("#data-date-search").text(displayYesterdayDate);
+}
+
+function renderCountry(countryPositive, countryRecovered, countryDeath){
+  $("#data-pos-total").text(countryPositive);
+  $("#data-rec-total").text(countryRecovered);
+  $("#data-death-total").text(countryDeath);
+  $("#data-date-total").text(displayTodayDate);
 }
