@@ -48,10 +48,7 @@ Introducing *Animate
 ## Contributing
 
 Overall team:
-Kouros Mousavi (PR master)
-Mason Kim
-Tummanoon 
-Claudia Love Petty
+Kouros Mousavi (PR master); Mason Kim; Tummanoon; Claudia Love Petty
 
 
 ## Versioning
