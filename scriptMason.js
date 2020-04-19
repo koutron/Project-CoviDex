@@ -95,7 +95,7 @@ function getSearch() {
   renderButtons();
 }
 
-
+getSearch();
 
 function getStateTwoDigitCode(stateFullName) {
 
