@@ -34,16 +34,16 @@
   </div>
 
   <!-- search list display -->
-  <form class="search-box">
+   <form class="search-box">
     <div class="container">
       <div class="form-group" id="stateSearch">
-        <input type="text" id="state-input" placeholder="search for a state"><button id="find-state" type="submit"><i class="fas fa-virus"></i></button><br>
+        <input type="text" id="state-input" placeholder="search for a state"><button id="find-state" type="submit"><i
+            class="fa fa-virus" aria-hidden="true"></i></button><br>
         <!-- We'll be dumping our searched states into this div. They will be in button form -->
         <div id="buttonsHere"></div>
   </form>
   </div>
   </div>
-
 
   <!-- CL: title and data display card for searched -->
   <div class="state-header-text">
@@ -52,6 +52,12 @@
 
   <!-- card disply of data -->
   <div class="card-group">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title" id="date">[date]</h3>
+        <h1 class="card-data" id="data-date-search"></h1>
+      </div>
+    </div>
     <div class="card">
       <div class="card-body">
         <h3 class="card-title" id="positive">[positive]</h3>
@@ -70,12 +76,6 @@
         <h1 class="card-data" id="data-death-search"></h1>
       </div>
     </div>
-    <div class="card">
-      <div class="card-body">
-        <h3 class="card-title" id="date">[date]</h3>
-        <h1 class="card-data" id="data-date-search"></h1>
-      </div>
-    </div>
   </div>
 
   <!-- CL: title and data display card for calculated overall-->
@@ -85,6 +85,12 @@
 
   <!-- card disply of data -->
   <div class="card-group">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title" id="date">[date] </h3>
+        <h1 class="card-data2 animated pulse infinite" id="data-date-total"></h1>
+      </div>
+    </div>
     <div class="card">
       <div class="card-body">
         <h3 class="card-title" id="positive">[positive]</h3>
@@ -103,12 +109,7 @@
         <h1 class="card-data2 animated pulse infinite" id="data-death-total"></h1>
       </div>
     </div>
-    <div class="card">
-      <div class="card-body">
-        <h3 class="card-title" id="date">[date] </h3>
-        <h1 class="card-data2 animated pulse infinite" id="data-date-total"></h1>
-      </div>
-    </div>
+
 
     <!-- footer -->
     <div class="footer">
@@ -120,13 +121,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
 
     <script>
-      $(function(){
+   $(function(){
         $('#find-state').click(function() {
           animate('.card-data', 'flash');
           return false;
         });
 
-
+        $('#buttonsHere').click(function() {
+          animate('.card-data', 'flash');
+          return false;
+        });
+    
         //animate function
         function animate(element, animation) {
           $(element).addClass('animated ' +animation);
@@ -135,6 +140,7 @@
           }, 1000)
         }
       })
+
     </script>
 
 
