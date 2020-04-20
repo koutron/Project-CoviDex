@@ -45,7 +45,7 @@ API calling technology with AJAX
 Introducing *Animate
 
 
-## Contributing
+## Contributing Developers
 
 Overall team:
 Kouros Mousavi (PR master); Mason Kim; Tummanoon; Claudia Love Petty
@@ -54,10 +54,6 @@ Kouros Mousavi (PR master); Mason Kim; Tummanoon; Claudia Love Petty
 ## Versioning
 
 Jira backlog for user stories which contributed to the development of this MVP: https://kmtc.atlassian.net/secure/RapidBoard.jspa?rapidView=1&projectKey=CA&view=planning.nodetail&selectedIssue=CA-82&issueLimit=100 For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 
 ## Acknowledgments
