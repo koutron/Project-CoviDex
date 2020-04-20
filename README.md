@@ -7,6 +7,8 @@ Project CoviDex is a simple data display app showing key coronavirus infection d
 The project deployment is a single URL click which opens in any browser: https://koutron.github.io/Project-CoviDex/
 Use the search input to search by US state and see the daily data populate for date | positive | recovered | deaths
 
+**add note about yesterday vs todays data logic
+
 ### Prerequisites
 
 You do not need to install anything to use CoviDex, but the latest chrome broswer is optimal
