@@ -26,6 +26,7 @@ $("#find-state").on("click", function (event) {
   // var search = $("#state-input").val();
   // allSearch.push(search)
   var searchedState = getStateName();
+  $("#state-name").text(": " + searchedState);
   searchedState = searchedState.toLowerCase();
 
   var abbrSearchedState = getStateTwoDigitCode(searchedState);
@@ -66,6 +67,7 @@ function getStateName() {
 // function to classify each button being clicked
 $("#buttonsHere").on("click", "button", function () {
   var buttonState = $(this).text();
+  $("#state-name").text(": " + buttonState);
   buttonState = buttonState.toLowerCase();
   var abbrButtonState = getStateTwoDigitCode(buttonState);
 
