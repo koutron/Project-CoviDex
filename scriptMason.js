@@ -26,25 +26,29 @@ $("#find-state").on("click", function (event) {
   // var search = $("#state-input").val();
   // allSearch.push(search)
   var searchedState = getStateName();
-  $("#state-name").text(": " + searchedState);
+  var capitalizedSearchedState = searchedState;
   searchedState = searchedState.toLowerCase();
-  
+
   var abbrSearchedState = getStateTwoDigitCode(searchedState);
- 
+  if (!abbrSearchedState) {
+    $("#error").text("Please enter a valid state name.");
+    resetSearchBar();
+  } else {
+    $.ajax({
+      url: "https://covidtracking.com/api/states/daily?state=" + abbrSearchedState + "&date=" + yesterday,
+      method: "GET"
+    }).then(function (response) {
+      var statePositive = response.positive;
+      var stateRecovered = response.recovered;
+      var stateDeath = response.death;
+      renderStates(statePositive, stateRecovered, stateDeath);
+    });
 
-  $.ajax({
-    url: "https://covidtracking.com/api/states/daily?state=" + abbrSearchedState + "&date=" + yesterday,
-    method: "GET"
-  }).then(function (response) {
-    var statePositive = response.positive;
-    var stateRecovered = response.recovered;
-    var stateDeath = response.death;
-    renderStates(statePositive, stateRecovered, stateDeath);
-  });
-
-  renderButtons();
-  storeSearch();
-  resetSearchBar();
+    $("#state-name").text(": " + capitalizedSearchedState);
+    renderButtons();
+    storeSearch();
+    resetSearchBar();
+  }
 });
 
 function resetSearchBar() {
@@ -65,7 +69,7 @@ $("#buttonsHere").on("click", "button", function () {
   $("#state-name").text(": " + buttonState);
   buttonState = buttonState.toLowerCase();
   var abbrButtonState = getStateTwoDigitCode(buttonState);
-  
+
   $.ajax({
     url: "https://covidtracking.com/api/states/daily?state=" + abbrButtonState + "&date=" + yesterday,
     method: "GET"
@@ -178,7 +182,7 @@ function renderStates(statePositive, stateRecovered, stateDeath) {
   $("#data-date-search").text(displayYesterdayDate);
 }
 
-function renderCountry(countryPositive, countryRecovered, countryDeath){
+function renderCountry(countryPositive, countryRecovered, countryDeath) {
   $("#data-pos-total").text(countryPositive);
   $("#data-rec-total").text(countryRecovered);
   $("#data-death-total").text(countryDeath);
