@@ -21,6 +21,7 @@ function renderButtons() {
 };
 
 // This on click will render out buttons from user input
+
 $("#find-state").on("click", function (event) {
   event.preventDefault();
   // var search = $("#state-input").val();
@@ -48,6 +49,7 @@ $("#find-state").on("click", function (event) {
     renderButtons();
     storeSearch();
     resetSearchBar();
+    $("#error").text("");
   }
 });
 
