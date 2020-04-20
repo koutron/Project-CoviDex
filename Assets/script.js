@@ -177,7 +177,6 @@ $.ajax({
   url: "https://covidtracking.com/api/v1/us/current.json",
   method: "GET"
 }).then(function (response) {
-  console.log(response);
   var countryPositive = response[0].positive;
   var countryRecovered = response[0].recovered;
   var countryDeath = response[0].death;
@@ -185,9 +184,24 @@ $.ajax({
 });
 
 function renderStates(statePositive, stateRecovered, stateDeath) {
+  if(statePositive){
   $("#data-pos-search").text(statePositive);
+  } else {
+    $("#data-pos-search").text("NO DATA");
+  }
+  
+  if(stateRecovered){
   $("#data-rec-search").text(stateRecovered);
+  } else {
+    $("#data-rec-search").text("NO DATA");
+  }
+  
+  if(stateDeath){
   $("#data-death-search").text(stateDeath);
+  } else {
+    $("#data-death-search").text("NO DATA");
+  }
+  
   $("#data-date-search").text(displayYesterdayDate);
 }
 
