@@ -26,30 +26,29 @@ $("#find-state").on("click", function (event) {
   // var search = $("#state-input").val();
   // allSearch.push(search)
   var searchedState = getStateName();
-  $("#state-name").text(": " + searchedState);
+  var capitalizedSearchedState = searchedState;
   searchedState = searchedState.toLowerCase();
 
   var abbrSearchedState = getStateTwoDigitCode(searchedState);
-
-
-  $.ajax({
-    url: "https://covidtracking.com/api/states/daily?state=" + abbrSearchedState + "&date=" + yesterday,
-    method: "GET"
-  }).done(function (response) {
-    var statePositive = response.positive;
-    var stateRecovered = response.recovered;
-    var stateDeath = response.death;
-    renderStates(statePositive, stateRecovered, stateDeath);
-  })
-    .fail(function (xhr, status, error) {
-      //Ajax request failed.
-      var errorMessage = xhr.status + ': ' + xhr.statusText
-      alert('Error - ' + errorMessage);
+  if (!abbrSearchedState) {
+    $("#error").text("Please enter a valid state name.");
+    resetSearchBar();
+  } else {
+    $.ajax({
+      url: "https://covidtracking.com/api/states/daily?state=" + abbrSearchedState + "&date=" + yesterday,
+      method: "GET"
+    }).then(function (response) {
+      var statePositive = response.positive;
+      var stateRecovered = response.recovered;
+      var stateDeath = response.death;
+      renderStates(statePositive, stateRecovered, stateDeath);
     });
 
-  renderButtons();
-  storeSearch();
-  resetSearchBar();
+    $("#state-name").text(": " + capitalizedSearchedState);
+    renderButtons();
+    storeSearch();
+    resetSearchBar();
+  }
 });
 
 function resetSearchBar() {

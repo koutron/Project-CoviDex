@@ -42,6 +42,10 @@ body {
 
 }
 
+#error {
+	color: rgb(233, 96, 96);
+}
+
 #state-input {
 	margin-top: 5px;
 	margin-left: 5px;
