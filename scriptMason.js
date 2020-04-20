@@ -60,8 +60,15 @@ function resetSearchBar() {
 // function to store users' input into Array
 function getStateName() {
   var search = $("#state-input").val();
+  search = search.toLowerCase();
+  var abbrSearchedState = getStateTwoDigitCode(search);
+  if(abbrSearchedState){
+  search = search.toUpperCase();
   allSearch.push(search);
   return search;
+  } else{
+    return search;
+  }
 };
 
 // acutaly click on the arleady existing state as a button
