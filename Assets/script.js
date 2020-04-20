@@ -34,6 +34,7 @@ $("#find-state").on("click", function (event) {
   if (!abbrSearchedState) {
     $("#error").text("Please enter a valid state name.");
     resetSearchBar();
+    AnimationEffect(stop);
   } else {
     $.ajax({
       url: "https://covidtracking.com/api/states/daily?state=" + abbrSearchedState + "&date=" + yesterday,
