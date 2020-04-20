@@ -58,5 +58,5 @@ Jira backlog for user stories which contributed to the development of this MVP: 
 
 ## Acknowledgments
 
-cute things, lovely things, team work, and weekend zooming!
-shout out to humanity in these pandemic times
+cute things, lovely things, team work (makes the dream work!), and weekend zooming!
+shout out to humanity in these pandemic times!!! love to the universe and everyone!!
